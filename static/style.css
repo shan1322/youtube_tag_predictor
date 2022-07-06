@@ -1,0 +1,42 @@
+  h1 {
+  color: black;
+  text-align: center;
+}
+
+.inp{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.labels {
+  color: black;
+  padding: 8px;
+    margin: 8px 8px;
+   text-align: center;
+
+}
+input[type=submit] {
+    padding:5px 15px;
+    margin: 8px 900px;
+     text-align: center;
+
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.out{
+ width: 100%;
+ line-height: 100px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
