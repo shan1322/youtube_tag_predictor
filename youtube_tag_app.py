@@ -29,6 +29,7 @@ def get_data(title, similarity=0.7):
     tag_rec = TagRecommendation(directory="data")
     tag_rec.load_data()
     # tag_rec.knn_pipe(mode="train", file="knn_tag.pkl")
+    model = joblib.load(os.path.join("data", "knn_tag.pkl"))
 
     out = tag_rec.knn_pipe(mode="predict", file="knn_tag.pkl",
                            df_or_string=title, threshold=similarity, model=model)
@@ -38,8 +39,8 @@ def get_data(title, similarity=0.7):
     else:
         return ",".join(out)
 if __name__ == "__main__":
-    tag_rec = TagRecommendation(directory="data")
+    '''tag_rec = TagRecommendation(directory="data")
     tag_rec.load_data()
-    model=tag_rec.knn_pipe(mode="train", file="knn_tag.pkl", model="", df_or_string="")
-
+    tag_rec.knn_pipe(mode="train", file="knn_tag.pkl", model="", df_or_string="")
+    '''
     app.run(debug=True)
