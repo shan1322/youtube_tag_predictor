@@ -39,8 +39,8 @@ def get_data(title, similarity=0.7):
     else:
         return ",".join(out)
 if __name__ == "__main__":
-    '''tag_rec = TagRecommendation(directory="data")
+    tag_rec = TagRecommendation(directory="data")
     tag_rec.load_data()
     tag_rec.knn_pipe(mode="train", file="knn_tag.pkl", model="", df_or_string="")
-    '''
+
     app.run(debug=True)
