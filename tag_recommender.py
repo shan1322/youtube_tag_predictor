@@ -17,13 +17,14 @@ warnings.filterwarnings("ignore")
 class TagRecommendation:
     def __init__(self, directory):
         self.directory = directory
-        self.nlp = spacy.load('en_core_web_lg')
+        self.nlp = spacy.load('en_core_web_sm')
         self.train_df = ""
         self.predict_df = ""
         self.test_df = ""
 
     def load_data(self):
-        self.train_df = load_csv(path=self.directory, file_name="train_tag.csv")
+        self.train_df = load_csv(path=self.directory, file_name="train_tag.csv").sample(frac=1)
+        print(self.train_df.shape)
         self.train_df['tags'] = self.train_df['tags'].str.lower()
         self.train_df['tags'] = self.train_df['tags'].str.split(",")
 
@@ -38,10 +39,11 @@ class TagRecommendation:
         if mode == "train":
             pipe = Pipeline([("lemma", LemmaClean(directory="")),
                              ("tfidf", TfidfVectorizer()),
-                             ("knn", NearestNeighbors(n_neighbors=5)),
+                             ("knn", NearestNeighbors(n_neighbors=3)),
                              # cannot exten beyond knn cause nearest neighbours has no fit , transofrm type method
                              ])
             model = pipe.fit(self.train_df)
+
             joblib.dump(model, filename=(os.path.join(self.directory, file)))
             print("training done ")
         elif mode == "predict":
