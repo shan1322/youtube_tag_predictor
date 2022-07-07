@@ -44,8 +44,8 @@ class TagRecommendation:
                              ])
             model = pipe.fit(self.train_df)
 
-            joblib.dump(model, filename=(os.path.join(self.directory, file)))
-            print("training done ")
+            #joblib.dump(model, filename=(os.path.join(self.directory, file)))
+            return model
         elif mode == "predict":
             model = model  # joblib.load(os.path.join(self.directory, file))
             knn_out = model["knn"].kneighbors(model['tfidf'].transform(model["lemma"].transform(df_or_string)),
